@@ -25,7 +25,7 @@ class Cache:
         Reference:
             - https://github.com/XAMPPRocky/tokei
         '''
-        cp = self._run('tokei')
+        cp = self._run('tokei', '--num-format', 'commas')
         return cp.stdout.decode()
 
     def _run(self, *args: str, cwd: t.Optional[p.Path] = None) -> subprocess.CompletedProcess:
