@@ -31,3 +31,10 @@
     <img src="https://img.shields.io/static/v1?label=WeChat&message=liangiydon&color=red" />
   </p>
 </div>
+
+
+
+<details>
+  <summary><strong>GitHub Statistics</strong></summary>
+  <img src="https://github-readme-stats.vercel.app/api?username=iydon&count_private=true&show_icons=true&include_all_commits=true&theme=graywhite" />
+</details>
