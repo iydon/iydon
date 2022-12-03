@@ -2,3 +2,7 @@
 ## code_statistics
 script/code_statistics/cache/
 script/code_statistics/config/github.private.json
+
+## tokei: https://github.com/XAMPPRocky/tokei/tree/251283677d1da3b1f379254f59a2ac3d70ab091c
+script/tokei/*
+!script/tokei/languages.json
