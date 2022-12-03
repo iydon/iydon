@@ -1,20 +1,39 @@
 {
   "languages": {
-    "ATeXDefinition": {
+    "TeXDefinition": {
       "name": "TeX Definition",
       "extensions": ["def"],
       "line_comment": ["%"]
     },
-    "AMATLAB": {
+    "MATLAB": {
       "name": "MATLAB",
       "line_comment": ["%"],
       "extensions": ["m"]
     },
-    "ATeXClass": {
+    "TeXClass": {
       "name": "TeX Class",
       "line_comment": ["%"],
       "extensions": ["cls"]
     },
+
+    "_ModuleDef": {
+      "name": "Module-Definition",
+      "extensions": ["def"],
+      "line_comment": [";"]
+    },
+    "_ObjectiveC": {
+      "name": "Objective-C",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["m"]
+    },
+    "_VB6": {
+      "name": "VB6",
+      "line_comment": ["'"],
+      "extensions": ["frm", "bas", "cls"]
+    },
+
     "Abap": {
       "name": "ABAP",
       "line_comment": ["*", "\\\""],
@@ -903,11 +922,6 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["mlt"]
     },
-    "ModuleDef": {
-      "name": "Module-Definition",
-      "extensions": ["def"],
-      "line_comment": [";"]
-    },
     "MoonScript": {
       "line_comment": ["--"],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
@@ -947,13 +961,6 @@
       "multi_line_comments": [["=begin", "=end"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["nqp"]
-    },
-    "ObjectiveC": {
-      "name": "Objective-C",
-      "line_comment": ["//"],
-      "multi_line_comments": [["/*", "*/"]],
-      "quotes": [["\\\"", "\\\""]],
-      "extensions": ["m"]
     },
     "ObjectiveCpp": {
       "name": "Objective-C++",
@@ -1504,11 +1511,6 @@
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["vala"]
-    },
-    "VB6": {
-      "name": "VB6",
-      "line_comment": ["'"],
-      "extensions": ["frm", "bas", "cls"]
     },
     "VBScript": {
       "name": "VBScript",
