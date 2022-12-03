@@ -1,7 +1,7 @@
 {
     "exclude": {
         "repos": [
-            "iydon/OpenFOAM"
+            "iydon/OpenFOAM", "iydon/iydon.github.io"
         ],
         "users": null
     },
