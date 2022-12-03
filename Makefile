@@ -16,7 +16,7 @@ stats:
 	@$(PYTHON) script/code_statistics/main.py
 
 tokei:
-	@$(TOKEI) script/code_statistics/cache/
+	@$(TOKEI) script/code_statistics/cache/ --num-format commas
 
 version:
 	@$(PYTHON) script/version.py
