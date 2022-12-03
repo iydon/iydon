@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iydon"
-version = "2022.11"
+version = "2022.12"
 description = "Profile README"
 authors = ["Iydon Liang <liangiydon@gmail.com>"]
 license = "MIT"
