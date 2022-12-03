@@ -1,9 +1,11 @@
+CARGO = cargo
+MAKE = make
 POETRY = poetry
 PYTHON = $(POETRY) run python
-TOKEI = tokei
+TOKEI = ./script/tokei/target/release/tokei
 
 
-.PHONY: help stats tokei version
+.PHONY: help stats tokei tokei-build version
 
 
 help:
@@ -14,9 +16,13 @@ help:
 
 stats:
 	@$(PYTHON) script/code_statistics/main.py
+	@$(MAKE) tokei
 
 tokei:
 	@$(TOKEI) script/code_statistics/cache/ --num-format commas
+
+tokei-build:
+	@cd script/tokei && $(CARGO) build --release
 
 version:
 	@$(PYTHON) script/version.py

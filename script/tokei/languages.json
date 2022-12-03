@@ -1,5 +1,20 @@
 {
   "languages": {
+    "ATeXDefinition": {
+      "name": "TeX Definition",
+      "extensions": ["def"],
+      "line_comment": ["%"]
+    },
+    "AMATLAB": {
+      "name": "MATLAB",
+      "line_comment": ["%"],
+      "extensions": ["m"]
+    },
+    "ATeXClass": {
+      "name": "TeX Class",
+      "line_comment": ["%"],
+      "extensions": ["cls"]
+    },
     "Abap": {
       "name": "ABAP",
       "line_comment": ["*", "\\\""],
