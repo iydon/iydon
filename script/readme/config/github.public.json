@@ -1,0 +1,18 @@
+{
+    "exclude": {
+        "repos": [
+            "iydon/OpenFOAM",
+            "iydon/iydon.github.io"
+        ]
+    },
+    "include": {
+        "users": [
+            "771569083",
+            "iDataHub",
+            "iydon",
+            "mathlang-org",
+            "SUSTech-MMA"
+        ]
+    },
+    "access_token": "{access_token}"
+}
