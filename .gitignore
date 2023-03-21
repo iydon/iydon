@@ -1,3 +1,9 @@
+# global
+__pycache__/
+
+# root
+/dist/
+
 # script
 ## readme
 script/readme/cache/
