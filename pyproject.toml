@@ -1,15 +1,41 @@
 [tool.poetry]
 name = "iydon"
-version = "2022.12"
-description = "Profile README"
+version = "2023.3.0"  # year.month.iota
+description = "Common tools of Iydon"
 authors = ["Iydon Liang <liangiydon@gmail.com>"]
-license = "MIT"
+keywords = ["utilities"]
+readme = "README.md"
+license = "GPL-3.0-only"
+homepage = "https://github.com/iydon/iydon"
+repository = "https://github.com/iydon/iydon"
+include = []
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: Chinese (Simplified)",
+    "Natural Language :: English",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/iydon/iydon/issues"
 
 [tool.poetry.dependencies]
-python = "^3.8"
-PyGithub = "^1.57"
+python = ">=3.7"
 
 [tool.poetry.dev-dependencies]
+PyGithub = "^1.58.1"
+tqdm = "^4.65.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
