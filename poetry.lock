@@ -169,6 +169,14 @@ slack = ["slack-sdk"]
 telegram = ["requests"]
 
 [[package]]
+name = "typing-extensions"
+version = "4.5.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[[package]]
 name = "urllib3"
 version = "1.26.15"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -189,10 +197,14 @@ category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
+[extras]
+full = ["typing-extensions"]
+type = ["typing-extensions"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7"
-content-hash = "036973f70d51e182083656a350777f93753826993df46115852a2379a6d139dc"
+content-hash = "78d79bbf0bd5534295c9c28c40c143b0b7af180b7e784db0d158c7c27324b63e"
 
 [metadata.files]
 certifi = []
@@ -211,5 +223,6 @@ pyjwt = []
 pynacl = []
 requests = []
 tqdm = []
+typing-extensions = []
 urllib3 = []
 wrapt = []

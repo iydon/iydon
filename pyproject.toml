@@ -32,6 +32,11 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.7"
+typing-extensions = {version = "^4.5.0", optional = true}
+
+[tool.poetry.extras]
+type = ["typing-extensions"]
+full = ["typing-extensions"]
 
 [tool.poetry.dev-dependencies]
 PyGithub = "^1.58.1"
