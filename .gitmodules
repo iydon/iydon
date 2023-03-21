@@ -1,0 +1,3 @@
+[submodule "script/readme/tokei"]
+	path = script/readme/tokei
+	url = https://github.com/XAMPPRocky/tokei
