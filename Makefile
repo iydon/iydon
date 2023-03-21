@@ -1,22 +1,25 @@
 CARGO = cargo
-MAKE = make
 POETRY = poetry
 PYTHON = $(POETRY) run python
 
 
-.PHONY: help publish readme tokei uncache
+.PHONY: help mypy publish readme tokei uncache
 
 
 help:
 	@echo "make help:    Print help information"
+	@echo "make mypy:    Check static type for Python"
 	@echo "make publish: Build and upload the package to PyPi"
 	@echo "make readme:  Get code statistics with Tokei"
 	@echo "make tokei:   Build personal Tokei"
 	@echo "make uncache: Remove __pycache__ directories"
 
+mypy:
+	@$(PYTHON) -m mypy iydon
+
 publish:
-	$(POETRY) build
-	$(POETRY) publish
+	@$(POETRY) build
+	@$(POETRY) publish
 
 readme: tokei
 	@$(PYTHON) script/readme/main.py
