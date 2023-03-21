@@ -29,4 +29,4 @@ tokei:
 	@cd script/readme/tokei/ && $(CARGO) build --release
 
 uncache:
-	@$(PYTHON) -c "list(map(__import__('shutil').rmtree, __import__('pathlib').Path('.').rglob('__pycache__')))"
+	@$(PYTHON) script/uncache.py
