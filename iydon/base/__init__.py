@@ -1,4 +1,4 @@
-__all__ = ['config', 'type']
+__all__ = ['constant', 'type']
 
 
-from . import config, type
+from . import constant, type

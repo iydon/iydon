@@ -1,4 +1,4 @@
-__all__ = ['NONE', 'Option']
+__all__ = ['Option']
 
 
 import copy
@@ -199,6 +199,3 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
 
     def _copy(self) -> 'te.Self[Ta]':  # type: ignore [misc]
         return self._match(lambda v: self.some(copy.deepcopy(v)), self.none)
-
-
-NONE = Option.none()
