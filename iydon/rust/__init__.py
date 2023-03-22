@@ -1,6 +1,5 @@
-__all__ = ['NONE', 'Option', 'Result']
+__all__ = ['NONE', 'Err', 'Ok', 'Option', 'Result', 'Some']
 
 
-from .constant import NONE
-from .option import Option
-from .result import Result
+from .std.option import Option, Some, NONE
+from .std.result import Result, Ok, Err
