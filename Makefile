@@ -3,13 +3,14 @@ POETRY = poetry
 PYTHON = $(POETRY) run python
 
 
-.PHONY: help mypy publish readme tokei uncache
+.PHONY: help mypy publish pytest readme tokei uncache
 
 
 help:
 	@echo "make help:    Print help information"
 	@echo "make mypy:    Check static type for Python"
 	@echo "make publish: Build and upload the package to PyPi"
+	@echo "make pytest:  Use pytest framework for unit testing"
 	@echo "make readme:  Get code statistics with Tokei"
 	@echo "make tokei:   Build personal Tokei"
 	@echo "make uncache: Remove __pycache__ directories"
@@ -20,6 +21,9 @@ mypy:
 publish:
 	@$(POETRY) build
 	@$(POETRY) publish
+
+pytest:
+	@$(PYTHON) -m pytest --pyargs iydon
 
 readme: tokei
 	@$(PYTHON) script/readme/main.py
