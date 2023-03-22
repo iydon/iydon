@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "iydon"
 version = "2023.3.0"  # year.month.iota
-description = "Common tools of Iydon"
+description = "Iydon's common tools"
 authors = ["Iydon Liang <liangiydon@gmail.com>"]
 keywords = ["utilities"]
 readme = "README.md"
@@ -42,6 +42,7 @@ full = ["typing-extensions"]
 PyGithub = "^1.58.1"
 tqdm = "^4.65.0"
 mypy = "^1.1.1"
+pytest = "^7.2.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
