@@ -17,6 +17,7 @@ Config = t.TypedDict(
 )
 Path = t.Union[str, p.Path]
 
+
 def loads(*paths: Path) -> Config:
     for path in map(p.Path, paths):
         if path.exists():
