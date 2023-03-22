@@ -42,7 +42,8 @@ tokei:
 	@cd script/readme/tokei/ && $(CARGO) build --release
 
 tox:
-	@$(PYTHON) -m tox
+	@$(PYTHON) -m tox --workdir \
+		./.tox/`python -c "print(__import__('sys').platform, end='')"`
 
 uncache:
 	@$(PYTHON) script/uncache.py
