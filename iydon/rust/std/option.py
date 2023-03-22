@@ -3,7 +3,6 @@ __all__ = ['NONE', 'Option', 'Some']
 
 import copy
 import typing as t
-import warnings as w
 
 from ...base.type import Ta, Tb, Tc, Func0, Func1, Func2
 
@@ -22,10 +21,11 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
         - https://github.com/iydon/iydon/blob/main/static/rust/option.rs
     '''
 
-    __slots__ = ('_value', )
+    __slots__ = ('_is_none', '_value')
     _none: t.Optional['te.Self[Ta]'] = None  # type: ignore [misc]
 
-    def __init__(self, value: t.Optional[Ta] = None) -> None:  # type: ignore [valid-type]
+    def __init__(self, value: t.Optional[Ta], is_none: bool) -> None:  # type: ignore [valid-type]
+        self._is_none = is_none
         self._value = value
 
     def __eq__(self, other: 'te.Self[Ta]') -> bool:  # type: ignore [misc, override]
@@ -48,12 +48,12 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
 
     @classmethod
     def some(cls, value: Ta) -> 'te.Self[Ta]':  # type: ignore [misc, valid-type]
-        return cls(value)
+        return cls(value, False)
 
     @classmethod
     def none(cls) -> 'te.Self[Ta]':  # type: ignore [misc]
         if cls._none is None:
-            cls._none = cls()
+            cls._none = cls(None, True)
         return cls._none  # type: ignore [return-value]
 
     def is_some(self) -> bool:
@@ -93,7 +93,7 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
             >>> x = Option.none()
             >>> assert x.is_none()
         '''
-        return self._value is None
+        return self._is_none
 
     def expect(self, msg: str) -> Ta:  # type: ignore [valid-type]
         '''Returns the contained [`Some`] value, consuming the `self` value.
@@ -349,110 +349,6 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
             lambda v1: opt._match(lambda v2: self.none(), lambda: self),
             lambda: opt._match(lambda v2: opt, self.none),
         )
-
-    def insert(self, value: Ta) -> Ta:  # type: ignore [valid-type]
-        '''Inserts `value` into the option, then returns a mutable reference to it.
-
-        Example:
-            >>> opt = Option.none()
-            >>> val = opt.insert(1)
-            >>> assert opt == Option.none()
-            >>> assert val == 1
-            >>> val = opt.insert(2)
-            >>> assert val == 2
-            >>> val = opt.insert(3)
-            >>> assert opt == Option.none()
-
-        TODO:
-            - `Some` and `None` are not convertible
-        '''
-        if self.is_none():
-            w.warn('`Some` and `None` are not convertible')
-            return value
-        else:
-            self._value = value
-            return value
-
-    def get_or_insert(self, value: Ta) -> Ta:  # type: ignore [valid-type]
-        '''Inserts `value` into the option if it is [`None`], then returns a mutable reference to the contained value.
-
-        Example:
-            >>> x = Option.none()
-            >>> y = x.get_or_insert(5)
-            >>> assert y == 5
-            >>> assert x == Option.none()
-
-        TODO:
-            - `Some` and `None` are not convertible
-        '''
-        if self.is_none():
-            w.warn('`Some` and `None` are not convertible')
-            return value
-        else:
-            return self._value
-
-    def get_or_insert_with(self, f: Func0[Ta]) -> Ta: # type: ignore [type-arg, valid-type]
-        '''Inserts a value computed from `f` into the option if it is [`None`], then returns a mutable reference to the contained value.
-
-        Example:
-            >>> x = Option.none()
-            >>> y = x.get_or_insert_with(lambda: 5)
-            >>> assert y == 5
-            >>> assert x == Option.none()
-
-        TODO:
-            - `Some` and `None` are not convertible
-        '''
-        if self.is_none():
-            w.warn('`Some` and `None` are not convertible')
-            return f()
-        else:
-            return self._value
-
-    def take(self) -> 'te.Self[Ta]':  # type: ignore [misc]
-        '''Takes the value out of the option, leaving a [`None`] in its place.
-
-        Example:
-            >>> x = Option.some(2)
-            >>> y = x.take()
-            >>> assert x == Option.some(2)
-            >>> assert y == Option.some(2)
-
-            >>> x = Option.none()
-            >>> y = x.take()
-            >>> assert x == Option.none()
-            >>> assert y == Option.none()
-
-        TODO:
-            - `Some` and `None` are not convertible
-        '''
-        if self.is_some():
-            w.warn('`Some` and `None` are not convertible')
-        return self
-
-    def replace(self, value: Ta) -> 'te.Self[Ta]':  # type: ignore [misc, valid-type]
-        '''Replaces the actual value in the option by the value given in parameter, returning the old value if present, leaving a [`Some`] in its place without deinitializing either one.
-
-        Example:
-            >>> x = Option.some(2)
-            >>> old = x.replace(5)
-            >>> assert x == Option.some(5)
-            >>> assert old == Option.some(2)
-
-            >>> x = Option.none()
-            >>> old = x.replace(3)
-            >>> assert x == Option.none()
-            >>> assert old == Option.none()
-
-        TODO:
-            - `Some` and `None` are not convertible
-        '''
-        if self.is_none():
-            w.warn('`Some` and `None` are not convertible')
-            return self
-        else:
-            ans, self._value = self.some(self._value), value
-            return ans
 
     def contains(self, x: Ta) -> bool:  # type: ignore [valid-type]
         '''Returns `true` if the option is a [`Some`] value containing the given value.
