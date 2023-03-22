@@ -10,3 +10,10 @@ script/readme/cache/
 script/readme/config/github.private.json
 script/readme/tokei/*
 !script/readme/tokei/languages.json
+
+# config
+## pyenv
+.python-version
+
+## tox
+.tox/
