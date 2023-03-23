@@ -43,6 +43,7 @@ PyGithub = "^1.58.1"
 tqdm = "^4.65.0"
 mypy = "^1.1.1"
 pytest = "^7.2.2"
+nox-poetry = "^1.0.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
