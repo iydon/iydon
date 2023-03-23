@@ -1,6 +1,7 @@
 import typing as t
 import subprocess
 import sys
+import warnings as w
 
 try:
     from tqdm import tqdm
@@ -17,7 +18,8 @@ pythons = [(3, 7), (3, 8), (3, 9), (3, 10), (3, 11), (3, 12)]
 
 def run(*args: str, output: bool = True) -> t.Optional[bytes]:
     cp = subprocess.run(args, capture_output=output)
-    # assert cp.returncode==0, cp.stderr
+    if cp.returncode != 0:
+        w.warn(cp.stderr)
     return cp.stdout
 
 
@@ -38,5 +40,5 @@ if __name__ == '__main__':
             version = f'{major}.{minor}.{max(micros)}'
             versions.append(version)
             print('Install:', version)
-            run(pyenv, 'install', version, output=False)
+            run(pyenv, 'install', '--skip-existing', version, output=False)
     run(pyenv, 'local', *versions, output=False)
