@@ -61,7 +61,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> x = Result.err('Some error message')
             >>> assert not x.is_ok()
         '''
-        return self._ok is not None  # type: ignore [has-type]
+        return self._ok is not None
 
     def is_ok_and(self, f: Func1[Ta, bool]) -> bool:  # type: ignore [type-arg, valid-type]
         '''Returns `true` if the result is [`Ok`] and the value inside of it matches a predicate.
@@ -76,7 +76,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> x = Result.err('hey')
             >>> assert not x.is_ok_and(lambda x: x>1)
         '''
-        return self.is_ok() and f(self._ok)  # type: ignore [has-type]
+        return self.is_ok() and f(self._ok)
 
     def is_err(self) -> bool:
         '''Returns `true` if the result is [`Err`].
@@ -103,7 +103,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> x = Result.ok(123)
             >>> assert not x.is_err_and(lambda x: type(x) is FileNotFoundError)
         '''
-        return self.is_err() and f(self._err)  # type: ignore [has-type]
+        return self.is_err() and f(self._err)
 
     def get_ok(self) -> 'Option[Ta]':  # type: ignore [type-arg, valid-type]
         '''Converts from `Result<T, E>` to [`Option<T>`].
@@ -122,7 +122,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         from .option import Option
 
-        return Option.new(self._ok)  # type: ignore [has-type]
+        return Option.new(self._ok)
 
     def get_err(self) -> 'Option[Tb]':  # type: ignore [type-arg, valid-type]
         '''Converts from `Result<T, E>` to [`Option<E>`].
@@ -141,7 +141,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         from .option import Option
 
-        return Option.new(self._err)  # type: ignore [has-type]
+        return Option.new(self._err)
 
     def map(self, op: Func1[Ta, Tc]) -> 'te.Self[Tc, Tb]':  # type: ignore [misc, type-arg, valid-type]
         '''Maps a `Result<T, E>` to `Result<U, E>` by applying a function to a contained [`Ok`] value, leaving an [`Err`] value untouched.
@@ -223,7 +223,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> assert y == 64
         '''
         if self.is_ok():
-            f(self._ok)  # type: ignore [has-type]
+            f(self._ok)
         return self
 
     def inspect_err(self, f: Func1[Tb, None]) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, type-arg, valid-type]
@@ -236,7 +236,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> assert x.is_err()
         '''
         if self.is_err():
-            f(self._err)  # type: ignore [has-type]
+            f(self._err)
         return self
 
     def expect(self, msg: str) -> Ta:  # type: ignore [valid-type]
@@ -251,7 +251,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         assert self.is_ok(), msg
 
-        return self._ok  # type: ignore [has-type]
+        return self._ok
 
     def unwrap(self) -> Ta:  # type: ignore [valid-type]
         '''Returns the contained [`Ok`] value, consuming the `self` value.
@@ -280,7 +280,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         assert self.is_err(), msg
 
-        return self._err  # type: ignore [has-type]
+        return self._err
 
     def unwrap_err(self) -> Tb:  # type: ignore [valid-type]
         '''Returns the contained [`Err`] value, consuming the `self` value.
@@ -441,9 +441,9 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             ```
         '''
         if self.is_ok():
-            return f4ok(self._ok)  # type: ignore [has-type]
+            return f4ok(self._ok)
         else:
-            return f4err(self._err)  # type: ignore [has-type]
+            return f4err(self._err)
 
 
 Ok = Result.ok

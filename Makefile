@@ -22,7 +22,7 @@ dev:
 	@$(POETRY) install --extras full
 
 mypy:
-	@$(PYTHON) -m mypy iydon
+	@$(PYTHON) -m mypy iydon --warn-unused-ignores
 
 publish:
 	@$(POETRY) build
