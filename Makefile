@@ -3,7 +3,7 @@ POETRY = poetry
 PYTHON = $(POETRY) run python
 
 
-.PHONY: help dev mypy nox publish pytest readme tokei uncache
+.PHONY: help dev mypy nox publish pytest readme tokei uncache upgrade
 
 
 help:
@@ -16,6 +16,7 @@ help:
 	@echo "make readme:  Get code statistics with Tokei"
 	@echo "make tokei:   Build personal Tokei"
 	@echo "make uncache: Remove __pycache__ directories"
+	@echo "make upgrade: Bump semantic version (simple)"
 
 dev:
 	@$(POETRY) install --extras full
@@ -44,3 +45,6 @@ tokei:
 
 uncache:
 	@$(PYTHON) script/uncache.py
+
+upgrade:
+	@$(PYTHON) script/upgrade.py
