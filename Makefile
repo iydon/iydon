@@ -24,7 +24,9 @@ mypy:
 	@$(PYTHON) -m mypy --warn-unused-ignores iydon
 
 nox:
-	@$(PYTHON) -m nox --noxfile script/noxfile.py
+	@cp script/noxfile.py .
+	@$(PYTHON) -m nox
+	@rm noxfile.py
 
 publish:
 	@$(POETRY) build

@@ -9,7 +9,7 @@ from nox_poetry.sessions import Session, session
 
 
 # parameters
-root = p.Path(__file__).absolute().parents[1]
+root = p.Path(__file__).absolute().parent
 options = {
     'envdir': (root/'.nox'/sys.platform).as_posix(),
     'reuse_existing_virtualenvs': True,
