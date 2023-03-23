@@ -12,8 +12,11 @@ script/readme/tokei/*
 !script/readme/tokei/languages.json
 
 # config
+## mypy
+.mypy_cache/
+## nox
+.nox/
 ## pyenv
 .python-version
-
-## tox
-.tox/
+## pytest
+.pytest_cache
