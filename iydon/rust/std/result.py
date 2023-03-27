@@ -14,7 +14,7 @@ if t.TYPE_CHECKING:
 class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
     '''Error handling with the `Result` type.
 
-    Reference:
+    References:
         - https://doc.rust-lang.org/std/result/
         - https://doc.rust-lang.org/src/core/result.rs.html
         - https://github.com/iydon/iydon/blob/main/static/rust/result.rs
@@ -52,9 +52,12 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return cls(None, err)
 
     def is_ok(self) -> bool:
-        '''Returns `true` if the result is [`Ok`].
+        '''Returns `true` if the result is `Ok`.
 
-        Example:
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(-3)
             >>> assert x.is_ok()
 
@@ -64,9 +67,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._ok is not None
 
     def is_ok_and(self, f: Func1[Ta, bool]) -> bool:  # type: ignore [type-arg, valid-type]
-        '''Returns `true` if the result is [`Ok`] and the value inside of it matches a predicate.
+        '''Returns `true` if the result is `Ok` and the value inside of it matches a predicate.
 
-        Example:
+        Args:
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(2)
             >>> assert x.is_ok_and(lambda x: x>1)
 
@@ -79,9 +88,12 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self.is_ok() and f(self._ok)
 
     def is_err(self) -> bool:
-        '''Returns `true` if the result is [`Err`].
+        '''Returns `true` if the result is `Err`.
 
-        Example:
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(-3)
             >>> assert not x.is_err()
 
@@ -91,9 +103,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return not self.is_ok()
 
     def is_err_and(self, f: Func1[Tb, bool]) -> bool:  # type: ignore [type-arg, valid-type]
-        '''Returns `true` if the result is [`Err`] and the value inside of it matches a predicate.
+        '''Returns `true` if the result is `Err` and the value inside of it matches a predicate.
 
-        Example:
+        Args:
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.err(FileNotFoundError('!'))
             >>> assert x.is_err_and(lambda x: type(x) is FileNotFoundError)
 
@@ -106,9 +124,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self.is_err() and f(self._err)
 
     def get_ok(self) -> 'Option[Ta]':  # type: ignore [type-arg, valid-type]
-        '''Converts from `Result<T, E>` to [`Option<T>`].
+        '''Converts from `Result<T, E>` to `Option<T>`.
 
-        Example:
+        Converts `self` into an `Option<T>`, consuming `self`,
+        and discarding the error, if any.
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> from iydon.rust.std.option import Option
 
             >>> x = Result.ok(2)
@@ -125,9 +149,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return Option.new(self._ok)
 
     def get_err(self) -> 'Option[Tb]':  # type: ignore [type-arg, valid-type]
-        '''Converts from `Result<T, E>` to [`Option<E>`].
+        '''Converts from `Result<T, E>` to `Option<E>`.
 
-        Example:
+        Converts `self` into an `Option<E>`, consuming `self`,
+        and discarding the success value, if any.
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> from iydon.rust.std.option import Option
 
             >>> x = Result.ok(2)
@@ -144,9 +174,18 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return Option.new(self._err)
 
     def map(self, op: Func1[Ta, Tc]) -> 'te.Self[Tc, Tb]':  # type: ignore [misc, type-arg, valid-type]
-        '''Maps a `Result<T, E>` to `Result<U, E>` by applying a function to a contained [`Ok`] value, leaving an [`Err`] value untouched.
+        '''Maps a `Result<T, E>` to `Result<U, E>` by applying a function to a
+            contained `Ok` value, leaving an `Err` value untouched.
 
-        Example:
+        This function can be used to compose the results of two functions.
+
+        Args:
+            op: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> lines = '1\\n2\\n3\\n4\\n'
 
             >>> for line in lines.splitlines():
@@ -168,9 +207,21 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: self.ok(op(o)), lambda e: self)
 
     def map_or(self, default: Tc, f: Func1[Ta, Tc]) -> Tc:  # type: ignore [type-arg, valid-type]
-        '''Returns the provided default (if [`Err`]), or applies a function to the contained value (if [`Ok`]).
+        '''Returns the provided default (if `Err`), or
+            applies a function to the contained value (if `Ok`).
 
-        Example:
+        Arguments passed to `map_or` are eagerly evaluated; if you are passing
+        the result of a function call, it is recommended to use `map_or_else`,
+        which is lazily evaluated.
+
+        Args:
+            default: ...
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok('foo')
             >>> assert x.map_or(42, len) == 3
 
@@ -183,9 +234,20 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: f(o), lambda e: default)
 
     def map_or_else(self, default: Func1[Tb, Tc], f: Func1[Ta, Tc]) -> Tc:  # type: ignore [type-arg, valid-type]
-        '''Maps a `Result<T, E>` to `U` by applying fallback function `default` to a contained [`Err`] value, or function `f` to a contained [`Ok`] value.
+        '''Maps a `Result<T, E>` to `U` by applying fallback function `default` to
+            a contained `Err` value, or function `f` to a contained `Ok` value.
 
-        Example:
+        This function can be used to unpack a successful result
+        while handling an error.
+
+        Args:
+            default: ...
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> k = 21
 
             >>> x = Result.ok('foo')
@@ -197,9 +259,19 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: f(o), lambda e: default(e))
 
     def map_err(self, op: Func1[Tb, Tc]) -> 'te.Self[Ta, Tc]':  # type: ignore [misc, type-arg, valid-type]
-        '''Maps a `Result<T, E>` to `Result<T, F>` by applying a function to a contained [`Err`] value, leaving an [`Ok`] value untouched.
+        '''Maps a `Result<T, E>` to `Result<T, F>` by applying a function to a
+            contained `Err` value, leaving an `Ok` value untouched.
 
-        Example:
+        This function can be used to pass through a successful result while handling
+        an error.
+
+        Args:
+            op: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> def stringify(x: int) -> str: return f'error code: {x}'
 
             >>> x = Result.ok(2)
@@ -211,9 +283,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: self, lambda e: self.err(op(e)))
 
     def inspect(self, f: Func1[Ta, None]) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, type-arg, valid-type]
-        '''Calls the provided closure with a reference to the contained value (if [`Ok`]).
+        '''Calls the provided closure with a reference to the contained value (if `Ok`).
 
-        Example:
+        Args:
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(4)
             >>> y = x \\
             ...     .inspect(lambda x: print(f'original: {x}')) \\
@@ -227,9 +305,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self
 
     def inspect_err(self, f: Func1[Tb, None]) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, type-arg, valid-type]
-        '''Calls the provided closure with a reference to the contained error (if [`Err`]).
+        '''Calls the provided closure with a reference to the contained error (if `Err`).
 
-        Example:
+        Args:
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.err('address.txt') \\
             ...     .inspect_err(lambda e: print(f'failed to read file: {e}'))
             failed to read file: address.txt
@@ -240,9 +324,23 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self
 
     def expect(self, msg: str) -> Ta:  # type: ignore [valid-type]
-        '''Returns the contained [`Ok`] value, consuming the `self` value.
+        '''Returns the contained `Ok` value, consuming the `self` value.
 
-        Example:
+        Because this function may panic, its use is generally discouraged.
+        Instead, prefer to use pattern matching and handle the `Err`
+        case explicitly, or call `unwrap_or`, `unwrap_or_else`.
+
+        Args:
+            msg: ...
+
+        Returns:
+            ans: ...
+
+        Raises:
+            AssertionError: Panics if the value is an `Err`, with a panic message including the
+                passed message, and the content of the `Err`.
+
+        Examples:
             >>> x = Result.err('emergency failure')
             >>> x.expect('Testing expect')
             Traceback (most recent call last):
@@ -254,9 +352,20 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._ok
 
     def unwrap(self) -> Ta:  # type: ignore [valid-type]
-        '''Returns the contained [`Ok`] value, consuming the `self` value.
+        '''Returns the contained `Ok` value, consuming the `self` value.
 
-        Example:
+        Because this function may panic, its use is generally discouraged.
+        Instead, prefer to use pattern matching and handle the `Err`
+        case explicitly, or call `unwrap_or`, `unwrap_or_else`.
+
+        Returns:
+            ans: ...
+
+        Raises:
+            AssertionError: Panics if the value is an `Err`, with a panic message provided by the
+                `Err`'s value.
+
+        Examples:
             >>> x = Result.ok(2)
             >>> assert x.unwrap() == 2
 
@@ -269,9 +378,19 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self.expect('called `Result::unwrap()` on an `Err` value')
 
     def expect_err(self, msg: str) -> Tb:  # type: ignore [valid-type]
-        '''Returns the contained [`Err`] value, consuming the `self` value.
+        '''Returns the contained `Err` value, consuming the `self` value.
 
-        Example:
+        Args:
+            msg: ...
+
+        Returns:
+            ans: ...
+
+        Raises:
+            AssertionError: Panics if the value is an `Ok`, with a panic message including the
+                passed message, and the content of the `Ok`.
+
+        Examples:
             >>> x = Result.ok(10)
             >>> x.expect_err('Testing expect_err')
             Traceback (most recent call last):
@@ -283,9 +402,16 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._err
 
     def unwrap_err(self) -> Tb:  # type: ignore [valid-type]
-        '''Returns the contained [`Err`] value, consuming the `self` value.
+        '''Returns the contained `Err` value, consuming the `self` value.
 
-        Example:
+        Returns:
+            ans: ...
+
+        Raises:
+            AssertionError: Panics if the value is an `Ok`, with a custom panic message provided
+                by the `Ok`'s value.
+
+        Examples:
             >>> x = Result.ok(2)
             >>> x.unwrap_err()
             Traceback (most recent call last):
@@ -298,9 +424,19 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self.expect_err('called `Result::unwrap_err()` on an `Ok` value')
 
     def and_(self, res: 'te.Self[Tc, Tb]') -> 'te.Self[Tc, Tb]':  # type: ignore [misc]
-        '''Returns `res` if the result is [`Ok`], otherwise returns the [`Err`] value of `self`.
+        '''Returns `res` if the result is `Ok`, otherwise returns the `Err` value of `self`.
 
-        Example:
+        Arguments passed to `and` are eagerly evaluated; if you are passing the
+        result of a function call, it is recommended to use `and_then`, which is
+        lazily evaluated.
+
+        Args:
+            res: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(2)
             >>> y = Result.err('late error')
             >>> assert x.and_(y) == Result.err('late error')
@@ -320,9 +456,17 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: res, lambda e: self)
 
     def and_then(self, op: Func1[Ta, 'te.Self[Tc, Tb]']) -> 'te.Self[Tc, Tb]':  # type: ignore [misc, type-arg, valid-type]
-        '''Calls `op` if the result is [`Ok`], otherwise returns the [`Err`] value of `self`.
+        '''Calls `op` if the result is `Ok`, otherwise returns the `Err` value of `self`.
 
-        Example:
+        This function can be used for control flow based on `Result` values.
+
+        Args:
+            op: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> from iydon.rust.std.option import Option
             >>> u32 = int
             >>> def sq_then_to_string(x: u32) -> Result[str, str]:
@@ -340,9 +484,19 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: op(o), lambda e: self)
 
     def or_(self, res: 'te.Self[Ta, Tc]') -> 'te.Self[Ta, Tc]':  # type: ignore [misc]
-        '''Returns `res` if the result is [`Err`], otherwise returns the [`Ok`] value of `self`.
+        '''Returns `res` if the result is `Err`, otherwise returns the `Ok` value of `self`.
 
-        Example:
+        Arguments passed to `or` are eagerly evaluated; if you are passing the
+        result of a function call, it is recommended to use `or_else`, which is
+        lazily evaluated.
+
+        Args:
+            res: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(2)
             >>> y = Result.err('late error')
             >>> assert x.or_(y) == Result.ok(2)
@@ -362,9 +516,17 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: self, lambda e: res)
 
     def or_else(self, op: Func1[Tb, 'te.Self[Ta, Tc]']) -> 'te.Self[Ta, Tc]':  # type: ignore [misc, type-arg, valid-type]
-        '''Calls `op` if the result is [`Err`], otherwise returns the [`Ok`] value of `self`.
+        '''Calls `op` if the result is `Err`, otherwise returns the `Ok` value of `self`.
 
-        Example:
+        This function can be used for control flow based on result values.
+
+        Args:
+            op: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> def sq(x: int) -> Result[int, int]: return Result.ok(x*x)
             >>> def err(x: int) -> Result[int, int]: return Result.err(x)
 
@@ -376,9 +538,19 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: self, lambda e: op(e))
 
     def unwrap_or(self, default: Ta) -> Ta:  # type: ignore [valid-type]
-        '''Returns the contained [`Ok`] value or a provided default.
+        '''Returns the contained `Ok` value or a provided default.
 
-        Example:
+        Arguments passed to `unwrap_or` are eagerly evaluated; if you are passing
+        the result of a function call, it is recommended to use `unwrap_or_else`,
+        which is lazily evaluated.
+
+        Args:
+            default: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> default = 2
 
             >>> x = Result.ok(9)
@@ -390,9 +562,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: o, lambda e: default)
 
     def unwrap_or_else(self, op: Func1[Tb, Ta]) -> Ta:  # type: ignore [type-arg, valid-type]
-        '''Returns the contained [`Ok`] value or computes it from a closure.
+        '''Returns the contained `Ok` value or computes it from a closure.
 
-        Example:
+        Args:
+            op: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> def count(x: str) -> int: return len(x)
 
             >>> assert Result.ok(2).unwrap_or_else(count) == 2
@@ -401,9 +579,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: o, lambda e: op(e))
 
     def contains(self, x: Ta) -> bool:  # type: ignore [valid-type]
-        '''Returns `true` if the result is an [`Ok`] value containing the given value.
+        '''Returns `true` if the result is an `Ok` value containing the given value.
 
-        Example:
+        Args:
+            x: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(2)
             >>> assert x.contains(2)
 
@@ -416,9 +600,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         return self._match(lambda o: o==x, lambda e: False)  # type: ignore [operator]
 
     def contains_err(self, f: Tb) -> bool:  # type: ignore [valid-type]
-        '''Returns `true` if the result is an [`Err`] value containing the given value.
+        '''Returns `true` if the result is an `Err` value containing the given value.
 
-        Example:
+        Args:
+            f: ...
+
+        Returns:
+            ans: ...
+
+        Examples:
             >>> x = Result.ok(2)
             >>> assert not x.contains_err('Some error message')
 
@@ -432,7 +622,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
 
     def _match(self, f4ok: Func1[Ta, Tc], f4err: Func1[Tb, Tc]) -> Tc:  # type: ignore [type-arg, valid-type]
         '''
-        Principle:
+        Prototype:
             ```Rust
             return match self {
                 Ok(o) => f4ok(o),
