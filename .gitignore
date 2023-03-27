@@ -12,6 +12,8 @@ script/readme/tokei/*
 !script/readme/tokei/languages.json
 
 # config
+# mkdocs
+site/
 ## mypy
 .mypy_cache/
 ## nox
