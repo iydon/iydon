@@ -57,5 +57,6 @@ def all(sess: Session) -> None:
     '''Run type checks and unit tests
     '''
     sess.run_always('poetry', 'install', '--extras', 'full', external=True)
+    sess.run('mkdocs', 'build')
     sess.run('mypy', '--warn-unused-ignores', 'iydon')
     sess.run('pytest', '--pyargs', 'iydon')
