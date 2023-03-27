@@ -3,12 +3,13 @@ POETRY = poetry
 PYTHON = $(POETRY) run python
 
 
-.PHONY: help dev mypy nox publish pytest readme tokei uncache upgrade
+.PHONY: help dev mkdocs mypy nox publish pytest readme tokei uncache upgrade
 
 
 help:
 	@echo "make help:    Print help information"
 	@echo "make dev:     Install the development dependencies"
+	@echo "make mkdocs:  Build the MkDocs documentation"
 	@echo "make mypy:    Check static type for Python"
 	@echo "make nox:     Use nox for automate and standardize testing"
 	@echo "make publish: Build and upload the package to PyPi"
@@ -20,6 +21,9 @@ help:
 
 dev:
 	@$(POETRY) install --extras full
+
+mkdocs:
+	@$(PYTHON) -m mkdocs build
 
 mypy:
 	@$(PYTHON) -m mypy --warn-unused-ignores iydon
