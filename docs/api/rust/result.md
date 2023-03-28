@@ -1,3 +1,3 @@
 # Result
 
-::: iydon.rust.std.result.Result
+::: iydon.util.rust.std.result.Result
