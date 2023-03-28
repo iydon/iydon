@@ -1,7 +1,7 @@
 '''No Silver Bullet.
 
 Examples:
-    >>> from iydon.glhf import silver_bullet
+    >>> from iydon.util.glhf import silver_bullet
     Traceback (most recent call last):
         ...
     SyntaxError: No Silver Bullet.

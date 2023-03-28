@@ -1,6 +1,6 @@
 import doctest
 
-from iydon.rust.std import option, result
+from iydon.util.rust.std import option, result
 
 
 def test_option() -> None:

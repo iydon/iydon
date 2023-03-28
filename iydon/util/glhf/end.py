@@ -7,7 +7,7 @@ class end:
     Examples:
         >>> import io
         >>> import sys
-        >>> from iydon.glhf.end import end
+        >>> from iydon.util.glhf.end import end
 
         >>> # if_stmt
         >>> if 1 + 1 == 2:

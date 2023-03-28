@@ -4,7 +4,7 @@ __all__ = ['NONE', 'Option', 'Some']
 import copy
 import typing as t
 
-from ...base.type import Ta, Tb, Tc, Func0, Func1, Func2
+from ....base.type import Ta, Tb, Tc, Func0, Func1, Func2
 
 if t.TYPE_CHECKING:
     import typing_extensions as te
@@ -293,7 +293,7 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
             ans: ...
 
         Examples:
-            >>> from iydon.rust.std.result import Result
+            >>> from iydon.util.rust.std.result import Result
 
             >>> x = Option.some('foo')
             >>> assert x.ok_or(0) == Result.ok('foo')
@@ -316,7 +316,7 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
             ans: ...
 
         Examples:
-            >>> from iydon.rust.std.result import Result
+            >>> from iydon.util.rust.std.result import Result
 
             >>> x = Option.some('foo')
             >>> assert x.ok_or_else(lambda: 0) == Result.ok('foo')

@@ -3,7 +3,6 @@ __all__ = [
     'DictStr', 'Func0', 'Func1', 'Func2',
     'Any', 'ListStr', 'DictStr2',
     'Path',
-    'ModuleType', 'NoneType',
 ]
 
 
@@ -28,7 +27,3 @@ DictStr2 = DictStr[str]  # type: ignore [type-arg]
 
 # types with specific names (if several files use this type, put it here)
 Path = t.Union[str, p.Path]
-
-# others
-ModuleType = type(t)
-NoneType = type(None)

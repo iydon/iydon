@@ -3,7 +3,7 @@ __all__ = ['Err', 'Ok', 'Result']
 
 import typing as t
 
-from ...base.type import Ta, Tb, Tc, Func1
+from ....base.type import Ta, Tb, Tc, Func1
 
 if t.TYPE_CHECKING:
     import typing_extensions as te
@@ -133,7 +133,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             ans: ...
 
         Examples:
-            >>> from iydon.rust.std.option import Option
+            >>> from iydon.util.rust.std.option import Option
 
             >>> x = Result.ok(2)
             >>> assert x.get_ok() == Option.some(2)
@@ -158,7 +158,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             ans: ...
 
         Examples:
-            >>> from iydon.rust.std.option import Option
+            >>> from iydon.util.rust.std.option import Option
 
             >>> x = Result.ok(2)
             >>> assert x.get_err() == Option.none()
@@ -467,7 +467,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             ans: ...
 
         Examples:
-            >>> from iydon.rust.std.option import Option
+            >>> from iydon.util.rust.std.option import Option
             >>> u32 = int
             >>> def sq_then_to_string(x: u32) -> Result[str, str]:
             ...     # u32::checked_mul
