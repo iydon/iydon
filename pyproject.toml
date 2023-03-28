@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iydon"
-version = "2023.3.1"  # year.month.iota
+version = "2023.3.2"  # year.month.iota
 description = "Iydon's common tools"
 authors = ["Iydon Liang <liangiydon@gmail.com>"]
 keywords = ["utilities"]
