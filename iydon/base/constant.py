@@ -9,4 +9,4 @@ description = 'Iydon\'s common tools'
 license = 'GPL-3.0-only'  # SPDX short identifier
 root = p.Path(__file__).absolute().parents[1]
 url = 'https://github.com/iydon/iydon'
-version = '2023.3.2'
+version = '2023.0'
