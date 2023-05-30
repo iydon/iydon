@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iydon"
-version = "2023.3.2"  # year.month.iota
+version = "2023.2"  # year.iota
 description = "Iydon's common tools"
 authors = ["Iydon Liang <liangiydon@gmail.com>"]
 keywords = ["utilities"]
@@ -39,15 +39,22 @@ type = ["typing-extensions"]
 full = ["typing-extensions"]
 
 [tool.poetry.dev-dependencies]
-PyGithub = "^1.58.1"
-tqdm = "^4.65.0"
-mypy = "^1.1.1"
-pytest = "^7.2.2"
-nox-poetry = "^1.0.2"
+click = "^8.1.3"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.1.4"
 mkdocstrings = {extras = ["python"], version = "^0.20.0"}
+mypy = "^1.1.1"
+nox-poetry = "^1.0.2"
+PyGithub = "^1.58.1"
+pytest = "^7.2.2"
+tqdm = "^4.65.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.script.config]
+upgrade = [
+    'pyproject.toml',
+    'iydon/base/constant.py',
+]
