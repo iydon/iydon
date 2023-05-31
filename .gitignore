@@ -5,20 +5,20 @@ __pycache__/
 /dist/
 
 # script
-## readme
-script/readme/cache/
-script/readme/config/github.private.json
-script/readme/tokei/*
-!script/readme/tokei/languages.json
+/.cache/
+/script/static/github.private.json
 
-# config
 # mkdocs
-site/
-## mypy
-.mypy_cache/
-## nox
-.nox/
-## pyenv
-.python-version
-## pytest
-.pytest_cache
+/site/
+
+# mypy
+/.mypy_cache/
+
+# nox
+/.nox/
+
+# pyenv
+/.python-version
+
+# pytest
+/.pytest_cache

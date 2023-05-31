@@ -14,14 +14,15 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Natural Language :: Chinese (Simplified)",
     "Natural Language :: English",
-    # "Operating System :: Microsoft :: Windows",  # TODO
+    # TODO: https://stackoverflow.com/questions/64138572/pyenv-global-interpreter-not-working-on-windows10
+    # "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    # "Programming Language :: Python :: 3.11",  # TODO
-    # "Programming Language :: Python :: 3.12",  # TODO
+    # "Programming Language :: Python :: 3.11",
+    # "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: User Interfaces",
     "Topic :: Utilities",
     "Typing :: Typed",

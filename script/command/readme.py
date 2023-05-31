@@ -1,47 +1,37 @@
 import json
 import pathlib as p
-import subprocess
 import typing as t
 
 import tqdm
 
 from github.MainClass import Github
 
+from ..config import CACHE, ROOT, STATIC
+from ..stub import _import
+from ..util import mkdir, pure, run
 
-root = p.Path(__file__).absolute().parent
+
 Config = t.TypedDict(
     'Config',
     exclude=t.TypedDict('exclude', repos=t.List[str], users=t.List[str]),
     include=t.TypedDict('include', repos=t.List[str], users=t.List[str]),
     access_token=str,
 )
-Path = t.Union[str, p.Path]
 
 
-def loads(*paths: Path) -> Config:
-    for path in map(p.Path, paths):
+def loads(*paths: p.Path) -> Config:
+    for path in paths:
         if path.exists():
             return Config(json.loads(path.read_text()))
     raise FileNotFoundError
 
-def mkdir(path: Path) -> p.Path:
-    directory = p.Path(path)
-    directory.mkdir(parents=True, exist_ok=True)
-    return directory
 
-def run(*args: str, cwd: t.Optional[Path] = None) -> str:
-    path = None if cwd is None else p.Path(cwd).as_posix()
-    cp = subprocess.run(args, cwd=path, capture_output=True)
-    assert cp.returncode==0, cp.stderr.decode()
-    return cp.stdout.decode()
-
-
-if __name__ == '__main__':
-    directory = mkdir(root/'cache')
-    config = loads(root/'config/github.private.json', root/'config/github.public.json')
-    tokei = (root/'tokei/target/release/tokei').as_posix()
-    template = (root/'config/readme.template.md').read_text()
-    readme = root.parents[1] / 'README.md'
+def api() -> None:
+    tokei = _import('.command.tokei').api()
+    directory = CACHE / 'github'
+    config = loads(STATIC/'github.private.json', STATIC/'github.public.json')
+    template = (STATIC / 'readme.template.md').read_text()
+    readme = ROOT / 'README.md'
 
     exclude, include = config.get('exclude', {}), config.get('include', {})
     exclude_repos, exclude_users = exclude.get('repos', None), exclude.get('users', None)
@@ -57,10 +47,9 @@ if __name__ == '__main__':
         ):
             path = directory / repo.owner.login / repo.name
             if path.exists():
-                run('git', 'pull', cwd=path)
+                run('git pull', capture_output=True, cwd=path)
             else:
                 mkdir(path.parent)
-                run('git', 'clone', repo.clone_url, path.as_posix())
-    readme.write_text(template.format(
-        tokei=run(tokei, '--num-format', 'commas', cwd=directory).strip(),
-    ))
+                run(f'git clone {repo.clone_url} {path}', capture_output=True)
+    cp = pure(f'{tokei} --num-format commas', capture_output=True, cwd=directory)
+    readme.write_text(template.format(tokei=cp.stdout.decode().strip()))
