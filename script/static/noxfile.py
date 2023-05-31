@@ -15,7 +15,7 @@ if t.TYPE_CHECKING:
 
 
 class Config:
-    root = p.Path(__file__).absolute().parents[2]
+    root = p.Path(__file__).absolute().parent
     options = {
         'envdir': (root/'.nox'/sys.platform).as_posix(),
         'reuse_existing_virtualenvs': True,
