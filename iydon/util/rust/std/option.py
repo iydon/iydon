@@ -189,6 +189,22 @@ class Option(t.Generic[Ta]):  # type: ignore [misc]
         '''
         return self._match(lambda v: v, f)
 
+    def unwrap_unchecked(self) -> Ta:  # type: ignore [valid-type]
+        '''Returns the contained `Some` value, consuming the `self` value,
+            without checking that the value is not `None`.
+
+        Returns:
+            ans: ...
+
+        Examples:
+            >>> x = Option.some('air')
+            >>> assert x.unwrap_unchecked() == 'air'
+
+            >>> x = Option.none()
+            >>> assert x.unwrap_unchecked() != 'air'  # Undefined behavior!
+        '''
+        return self._value
+
     def map(self, f: Func1[Ta, Tb]) -> 'te.Self[Tb]':  # type: ignore [misc, type-arg, valid-type]
         '''Maps an `Option<T>` to `Option<U>` by applying a function to a contained value (if `Some`) or returns `None` (if `None`).
 

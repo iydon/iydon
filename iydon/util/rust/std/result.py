@@ -563,6 +563,38 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         return self._match(lambda o: o, lambda e: default)
 
+    def unwrap_unchecked(self) -> Ta:  # type: ignore [valid-type]
+        '''Returns the contained `Ok` value, consuming the `self` value,
+            without checking that the value is not an `Err`.
+
+        Returns:
+            ans: ...
+
+        Examples:
+            >>> x = Result.ok(2)
+            >>> assert x.unwrap_unchecked() == 2
+
+            >>> x = Result.err('emergency failure')
+            >>> assert x.unwrap_unchecked() != 2  # Undefined behavior!
+        '''
+        return self._ok
+
+    def unwrap_err_unchecked(self) -> Ta:  # type: ignore [valid-type]
+        '''Returns the contained `Err` value, consuming the `self` value,
+            without checking that the value is not an `Ok`.
+
+        Returns:
+            ans: ...
+
+        Examples:
+            >>> x = Result.ok(2)
+            >>> assert x.unwrap_err_unchecked() != 2  # Undefined behavior!
+
+            >>> x = Result.err('emergency failure')
+            >>> assert x.unwrap_err_unchecked() == 'emergency failure'
+        '''
+        return self._err
+
     def unwrap_or_else(self, op: Func1[Tb, Ta]) -> Ta:  # type: ignore [type-arg, valid-type]
         '''Returns the contained `Ok` value or computes it from a closure.
 

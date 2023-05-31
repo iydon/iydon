@@ -1,7 +1,7 @@
 __all__ = [
     'Ta', 'Tb', 'Tc',
-    'DictStr', 'Func0', 'Func1', 'Func2',
-    'Any', 'ListStr', 'DictStr2',
+    'DictStr', 'Func0', 'Func1', 'Func2', 'Pair', 'Triple',
+    'Any', 'DictStr2', 'Strings',
     'Path',
 ]
 
@@ -19,11 +19,13 @@ DictStr = t.Dict[str, T1]  # type: ignore [valid-type]
 Func0 = t.Callable[[], T1]  # type: ignore [valid-type]
 Func1 = t.Callable[[T1], T2]  # type: ignore [valid-type]
 Func2 = t.Callable[[T1, T2], T3]  # type: ignore [valid-type]
+Pair = t.Tuple[T1, T2]  # type: ignore [valid-type]
+Triple = t.Tuple[T1, T2, T3]  # type: ignore [valid-type]
 
 # types with abstract names
 Any = t.Any
-ListStr = t.List[str]
 DictStr2 = DictStr[str]  # type: ignore [type-arg]
+Strings = t.List[str]
 
 # types with specific names (if several files use this type, put it here)
 Path = t.Union[str, p.Path]

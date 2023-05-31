@@ -9,6 +9,6 @@ def test_end() -> None:
 
 def test_silver_bullet() -> None:
     try:
-        from iydon.util.glhf import silver_bullet as _
+        from iydon.util.glhf import silver_bullet
     except SyntaxError as e:
         assert e.msg == 'No Silver Bullet.'
