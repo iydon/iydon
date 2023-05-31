@@ -9,9 +9,11 @@ def _import(name: str, package: str = __package__) -> _t.ModuleType:
 
 
 @_c.command()
-def mkdocs() -> None:
+@_c.option('-b', '--build', is_flag=True)
+@_c.option('-s', '--serve', is_flag=True)
+def mkdocs(build: bool, serve: bool) -> None:
     '''Build the MkDocs documentation'''
-    _import('.command.mkdocs').api()
+    _import('.command.mkdocs').api(build, serve)
 
 
 @_c.command()
