@@ -20,9 +20,10 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         - https://github.com/iydon/iydon/blob/main/static/rust/result.rs
     '''
 
-    __slots__ = ('_ok', '_err')
+    __slots__ = ('_is_ok', '_ok', '_err')
 
-    def __init__(self, ok: t.Optional[Ta] = None, err: t.Optional[Tb] = None) -> None:  # type: ignore [valid-type]
+    def __init__(self, ok: t.Optional[Ta] = None, err: t.Optional[Tb] = None, is_ok: bool = True) -> None:  # type: ignore [valid-type]
+        self._is_ok = is_ok
         self._ok = ok
         self._err = err
 
@@ -41,15 +42,15 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
     def new(cls, ok: t.Optional[Ta] = None, err: t.Optional[Tb] = None) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, valid-type]
         assert (ok is None and err is not None) or (ok is not None and err is None)
 
-        return cls(ok, err)
+        return cls(ok, err, ok is not None)
 
     @classmethod
     def ok(cls, ok: Ta) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, valid-type]
-        return cls(ok, None)
+        return cls(ok, None, True)
 
     @classmethod
     def err(cls, err: Tb) -> 'te.Self[Ta, Tb]':  # type: ignore [misc, valid-type]
-        return cls(None, err)
+        return cls(None, err, False)
 
     def is_ok(self) -> bool:
         '''Returns `true` if the result is `Ok`.
@@ -64,7 +65,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> x = Result.err('Some error message')
             >>> assert not x.is_ok()
         '''
-        return self._ok is not None
+        return self._is_ok
 
     def is_ok_and(self, f: Func1[Ta, bool]) -> bool:  # type: ignore [type-arg, valid-type]
         '''Returns `true` if the result is `Ok` and the value inside of it matches a predicate.
@@ -146,7 +147,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         from .option import Option
 
-        return Option.new(self._ok)
+        return self._match(Option.some, lambda e: Option.none())
 
     def get_err(self) -> 'Option[Tb]':  # type: ignore [type-arg, valid-type]
         '''Converts from `Result<T, E>` to `Option<E>`.
@@ -171,6 +172,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
         '''
         from .option import Option
 
+        return self._match(lambda o: Option.none(), Option.some)
         return Option.new(self._err)
 
     def map(self, op: Func1[Ta, Tc]) -> 'te.Self[Tc, Tb]':  # type: ignore [misc, type-arg, valid-type]
@@ -229,7 +231,7 @@ class Result(t.Generic[Ta, Tb]):  # type: ignore [misc]
             >>> assert x.map_or(42, len) == 42
 
         TODO:
-            - Typo @ https://github.com/iydon/iydon/blob/main/static/rust/result.rs#L768
+            - Typo @ https://github.com/iydon/iydon/blob/main/static/rust/result.rs#L752
         '''
         return self._match(lambda o: f(o), lambda e: default)
 
