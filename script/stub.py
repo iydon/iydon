@@ -50,6 +50,12 @@ def readme() -> None:
 
 
 @_c.command()
+def test() -> None:
+    '''Run: mypy && pytest'''
+    _import('.command.test').api()
+
+
+@_c.command()
 def tokei() -> None:
     '''Build personal Tokei'''
     _import('.command.tokei').api()
