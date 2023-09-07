@@ -11,22 +11,20 @@
 
   <p align="center">
     <a href="https://www.iydon.top">
-      <img src="https://img.shields.io/static/v1?label=Blog&message=iydon.top&color=brightgreen" />
+      <img src="https://img.shields.io/static/v1?label=Blog&message=iydon.top&color=green" />
     </a>
     ·
     <a href="https://github.com/iydon">
-      <img src="https://img.shields.io/static/v1?label=GitHub&message=iydon&color=green" />
+      <img src="https://img.shields.io/static/v1?label=GitHub&message=iydon&color=yellowgreen" />
     </a>
     ·
     <a href="mailto:liangiydon@gmail.com">
-      <img src="https://img.shields.io/static/v1?label=Gmail&message=liangiydon&color=yellowgreen" />
+      <img src="https://img.shields.io/static/v1?label=Gmail&message=liangiydon&color=yellow" />
     </a>
     ·
     <a href="https://steamcommunity.com/id/iydon">
-      <img src="https://img.shields.io/static/v1?label=Steam&message=iydon&color=yellow" />
+      <img src="https://img.shields.io/static/v1?label=Steam&message=iydon&color=orange" />
     </a>
-    ·
-    <img src="https://visitor-badge.glitch.me/badge?page_id=iydon&right_color=orange&left_text=Visitors" />
     ·
     <img src="https://img.shields.io/static/v1?label=WeChat&message=liangiydon&color=red" />
   </p>
@@ -50,8 +48,9 @@
  Autoconf                9           45           36            0            9
  BASH                   32           98           34           32           32
  Batch                   7          343          289            3           51
- C                      35        4,264        2,477        1,053          734
- C Header               46        3,370        2,351          485          534
+ C                      36        4,418        2,599        1,060          759
+ C Header               47        3,554        2,507          485          562
+ CMake                   1           21           14            0            7
  C++                    13          611          462           40          109
  CSS                     6          493          480           12            1
  Cython                  1           16            7            5            4
@@ -64,18 +63,18 @@
  Julia                   2          120          105            0           15
  M4                      2        1,069          927            0          142
  MATLAB                155        6,266        4,650        1,017          599
- Makefile               67        1,228          859           79          290
- Python                820       86,004       74,113        2,090        9,801
+ Makefile               69        1,272          888           85          299
+ Python                836       86,430       74,424        2,102        9,904
  R                       5          256          215            6           35
  ReStructuredText       21        1,046          705            0          341
- Shell                   9          158           91           38           29
+ Shell                  11          174          101           40           33
  SQL                    19        7,774        7,623           88           63
  SVG                     6          968          883            1           84
  TeX Class              26       14,113       10,567        2,414        1,132
  TeX Definition          3          207          195           12            0
- TeX                   676      328,270      178,952        3,421      145,897
- Plain Text             64      182,267            0      180,076        2,191
- TOML                   16          524          454           11           59
+ TeX                   676      328,353      179,029        3,421      145,903
+ Plain Text             67      183,640            0      181,202        2,438
+ TOML                   18          609          529           15           65
  XML                     1            7            7            0            0
  YAML                   94       37,690       35,842        1,147          701
 -------------------------------------------------------------------------------
@@ -89,7 +88,7 @@
  |- Python              10          370          324           11           35
  (Total)                            658          324          270           64
 -------------------------------------------------------------------------------
- Markdown              378       27,174            0       20,748        6,426
+ Markdown              381       26,913            0       20,808        6,105
  |- C                    1            7            6            0            1
  |- C++                  2           78           63            2           13
  |- HTML                 2           66           66            0            0
@@ -104,13 +103,13 @@
  |- TeX                  2           42           35            0            7
  |- XML                  1            8            8            0            0
  |- YAML                 7          263          234           17           12
- (Total)                         32,324        4,501       20,970        6,853
+ (Total)                         32,063        4,501       21,030        6,532
 -------------------------------------------------------------------------------
- Rust                  146       11,175        9,653          333        1,189
- |- Markdown             2        2,823           26        2,129          668
- (Total)                         13,998        9,679        2,462        1,857
+ Rust                  191       20,121       17,145          694        2,282
+ |- Markdown            45        8,067           58        5,930        2,079
+ (Total)                         28,188       17,203        6,624        4,361
 ===============================================================================
- Total               2,747      740,526      356,388      213,533      170,605
+ Total               2,823      751,597      364,674      215,111      171,812
 ===============================================================================
   </code></pre>
 </details>
