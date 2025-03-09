@@ -11,22 +11,20 @@
 
   <p align="center">
     <a href="https://www.iydon.top">
-      <img src="https://img.shields.io/static/v1?label=Blog&message=iydon.top&color=brightgreen" />
+      <img src="https://img.shields.io/static/v1?label=Blog&message=iydon.top&color=green" />
     </a>
     ·
     <a href="https://github.com/iydon">
-      <img src="https://img.shields.io/static/v1?label=GitHub&message=iydon&color=green" />
+      <img src="https://img.shields.io/static/v1?label=GitHub&message=iydon&color=yellowgreen" />
     </a>
     ·
     <a href="mailto:liangiydon@gmail.com">
-      <img src="https://img.shields.io/static/v1?label=Gmail&message=liangiydon&color=yellowgreen" />
+      <img src="https://img.shields.io/static/v1?label=Gmail&message=liangiydon&color=yellow" />
     </a>
     ·
     <a href="https://steamcommunity.com/id/iydon">
-      <img src="https://img.shields.io/static/v1?label=Steam&message=iydon&color=yellow" />
+      <img src="https://img.shields.io/static/v1?label=Steam&message=iydon&color=orange" />
     </a>
-    ·
-    <img src="https://visitor-badge.glitch.me/badge?page_id=iydon&right_color=orange&left_text=Visitors" />
     ·
     <img src="https://img.shields.io/static/v1?label=WeChat&message=liangiydon&color=red" />
   </p>
