@@ -16,24 +16,6 @@
       "line_comment": ["%"]
     },
 
-    "_ModuleDef": {
-      "name": "Module-Definition",
-      "extensions": ["def"],
-      "line_comment": [";"]
-    },
-    "_ObjectiveC": {
-      "name": "Objective-C",
-      "line_comment": ["//"],
-      "multi_line_comments": [["/*", "*/"]],
-      "quotes": [["\\\"", "\\\""]],
-      "extensions": ["m"]
-    },
-    "_VB6": {
-      "name": "VB6",
-      "line_comment": ["'"],
-      "extensions": ["frm", "bas", "cls"]
-    },
-
     "Abap": {
       "name": "ABAP",
       "line_comment": ["*", "\\\""],
@@ -67,12 +49,23 @@
       "multi_line_comments": [["/*", "*/"]],
       "extensions": ["als"]
     },
+    "Apl": {
+      "name": "APL",
+      "line_comment": ["⍝"],
+      "extensions": ["apl", "aplf", "apls"],
+      "quotes": [["'", "'"]]
+    },
     "Arduino": {
       "name": "Arduino C++",
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["ino"]
+    },
+    "Arturo": {
+      "line_comment": [";"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["art"]
     },
     "AsciiDoc": {
       "line_comment": ["//"],
@@ -116,6 +109,11 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["s"]
     },
+    "Astro": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"], ["<!--", "-->"]],
+      "extensions": ["astro"]
+    },
     "Ats": {
       "name": "ATS",
       "line_comment": ["//"],
@@ -151,6 +149,14 @@
       "shebangs": ["#!/bin/awk -f"],
       "extensions": ["awk"]
     },
+    "Ballerina": {
+      "line_comment": ["//", "#"],
+      "quotes": [
+        ["\\\"", "\\\""],
+        ["`", "`"]
+      ],
+      "extensions": ["bal"]
+    },
     "Bash": {
       "name": "BASH",
       "shebangs": ["#!/bin/bash"],
@@ -163,16 +169,35 @@
       "line_comment": ["REM", "::"],
       "extensions": ["bat", "btm", "cmd"]
     },
+    "Bazel": {
+      "line_comment": ["#"],
+      "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["'''", "'''"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "extensions": ["bzl", "bazel", "bzlmod"],
+      "filenames": ["build", "workspace", "module"]
+    },
     "Bean": {
       "line_comment": [";"],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["bean", "beancount"]
     },
+    "Bicep" : {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["'", "'"], ["'''", "'''"]],
+      "extensions": ["bicep", "bicepparam"]
+    },
     "Bitbake": {
       "name": "Bitbake",
       "line_comment": ["#"],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
-      "extensions": ["bb", "bbclass", "bbappend", "inc", "conf"]
+      "extensions": ["bb", "bbclass", "bbappend", "inc"]
+    },
+    "Bqn": {
+      "name": "BQN",
+      "line_comment": ["#"],
+      "extensions": ["bqn"],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]]
     },
     "BrightScript": {
       "quotes": [["\\\"", "\\\""]],
@@ -191,6 +216,23 @@
       "multi_line_comments": [["{-", "-}"]],
       "extensions": ["cabal"]
     },
+    "Cairo": {
+      "line_comment": ["//"],
+      "extensions": ["cairo"],
+      "quotes": [
+        ["\\\"", "\\\""],
+        ["'", "'"]
+      ]
+    },
+    "Cangjie": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "nested": true,
+      "quotes": [["\\\"", "\\\""],["\\\"\\\"\\\"", "\\\"\\\"\\\""]],
+      "verbatim_quotes": [["#\\\"", "\\\"#"],["##\\\"", "\\\"##"],["###\\\"", "\\\"###"],
+        ["#'", "'#"],["##'", "'##"],["###'", "'###"]],
+      "extensions": ["cj"]
+    },
     "Cassius": {
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
@@ -203,12 +245,29 @@
       "quotes": [["\\\"", "\\\""], ["\\\"\\\"\\\"", "\\\"\\\"\\\""]],
       "extensions": ["ceylon"]
     },
+    "Chapel": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "extensions": ["chpl"]
+    },
     "CHeader": {
       "name": "C Header",
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["h"]
+    },
+    "Cil": {
+      "name": "CIL (SELinux)",
+      "line_comment": [";"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["cil"]
+    },
+    "Circom": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["circom"]
     },
     "Clojure": {
       "line_comment": [";"],
@@ -321,6 +380,17 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["cu"]
     },
+    "Cue": {
+      "name": "CUE",
+      "line_comment": ["//"],
+      "quotes": [
+        ["\\\"", "\\\""],
+        ["'", "'"],
+        ["\\\"\\\"\\\"", "\\\"\\\"\\\""]
+      ],
+      "verbatim_quotes": [["#\\\"", "\\\"#"]],
+      "extensions": ["cue"]
+    },
     "Cython": {
       "line_comment": ["#"],
       "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["'''", "'''"]],
@@ -334,6 +404,11 @@
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "nested_comments": [["/+", "+/"]],
       "extensions": ["d"]
+    },
+    "D2": {
+      "line_comment": ["#"],
+      "multi_line_comments": [["\\\"\\\"\\\"", "\\\"\\\"\\\""]],
+      "extensions": ["d2"]
     },
     "Daml": {
       "name": "DAML",
@@ -397,9 +472,29 @@
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["ebuild", "eclass"]
     },
+    "EdgeQL": {
+      "name": "EdgeQL",
+      "line_comment": ["#"],
+      "quotes": [["'", "'"], ["\\\"", "\\\""], ["$", "$"]],
+      "extensions": ["edgeql"]
+    },
+    "ESDL": {
+      "name": "EdgeDB Schema Definition",
+      "line_comment": ["#"],
+      "quotes": [["'", "'"], ["\\\"", "\\\""]],
+      "extensions": ["esdl"]
+    },
     "Edn": {
       "line_comment": [";"],
       "extensions": ["edn"]
+    },
+    "Eighth": {
+      "name": "8th",
+      "line_comment": ["\\\\ ", "-- "],
+      "multi_line_comments": [["(*", "*)"]],
+      "nested": true,
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["8th"]
     },
     "Elisp": {
       "name": "Emacs Lisp",
@@ -504,7 +599,7 @@
       "name": "FORTRAN Modern",
       "line_comment": ["!"],
       "quotes": [["\\\"", "\\\""]],
-      "extensions": ["f03", "f08", "f90", "f95"]
+      "extensions": ["f03", "f08", "f90", "f95", "fpp"]
     },
     "FreeMarker": {
       "multi_line_comments": [["<#--", "-->"]],
@@ -523,7 +618,7 @@
       "quotes": [["\\\"", "\\\""]],
       "line_comment": ["//"],
       "multi_line_comments": [["(*", "*)"]],
-      "extensions": ["fst"]
+      "extensions": ["fst", "fsti"]
     },
     "Futhark": {
       "line_comment": ["--"],
@@ -554,6 +649,22 @@
       "line_comment": ["//", "///", "////"],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["gleam"]
+    },
+    "GlimmerJs": {
+      "name": "Glimmer JS",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"], ["<!--", "-->"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
+      "important_syntax": ["<template", "<style"],
+      "extensions": ["gjs"]
+    },
+    "GlimmerTs": {
+      "name": "Glimmer TS",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"], ["<!--", "-->"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
+      "important_syntax": ["<template", "<style"],
+      "extensions": ["gts"]
     },
     "Glsl": {
       "name": "GLSL",
@@ -647,12 +758,17 @@
       "blank": true,
       "extensions": ["hex"]
     },
+    "HiCad": {
+      "name": "HICAD",
+      "line_comment": ["REM", "rem"],
+      "extensions": ["MAC", "mac"]
+    },
     "Hlsl": {
       "name": "HLSL",
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
-      "extensions": ["hlsl"]
+      "extensions": ["hlsl", "fx", "fxsub"]
     },
     "HolyC": {
       "line_comment": ["//"],
@@ -709,6 +825,11 @@
       "extensions": ["jai"],
       "nested": true
     },
+    "Janet": {
+      "line_comment": ["#"],
+      "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
+      "extensions": ["janet"]
+    },
     "Java": {
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
@@ -742,8 +863,20 @@
     "Jinja2": {
       "name": "Jinja2",
       "blank": true,
-      "extensions": ["j2"],
+      "extensions": ["j2", "jinja"],
       "multi_line_comments": [["{#", "#}"]]
+    },
+    "Jq": {
+      "name": "jq",
+      "line_comment": ["#"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["jq"]
+    },
+    "JSLT": {
+      "name": "JSLT",
+      "line_comment": ["//"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["jslt"]
     },
     "Json": {
       "name": "JSON",
@@ -781,6 +914,13 @@
       "name": "Jupyter Notebooks",
       "extensions": ["ipynb"]
     },
+    "Just": {
+      "shebangs": ["#!/usr/bin/env just --justfile"],
+      "env": ["just"],
+      "line_comment": ["#"],
+      "extensions": ["just"],
+      "filenames": ["justfile"]
+    },
     "K": {
       "name": "K",
       "nested": true,
@@ -809,6 +949,13 @@
       "env": ["ksh"],
       "extensions": ["ksh"]
     },
+    "Lalrpop": {
+      "name": "LALRPOP",
+      "line_comment": ["//"],
+      "extensions": ["lalrpop"],
+      "quotes": [["\\\"", "\\\""], ["#\\\"", "\\\"#"]],
+      "verbatim_quotes": [["r##\\\"", "\\\"##"], ["r#\\\"", "\\\"#"]]
+    },
     "KvLanguage": {
       "name":"KV Language",
       "line_comment": ["# "],
@@ -822,6 +969,13 @@
       "nested": true,
       "extensions": ["lean", "hlean"]
     },
+    "Hledger": {
+      "name": "hledger",
+      "line_comment": [";", "#"],
+      "multi_line_comments": [["comment", "end comment"]],
+      "nested": false,
+      "extensions": ["hledger"]
+    },
     "Less": {
       "name": "LESS",
       "line_comment": ["//"],
@@ -829,18 +983,31 @@
       "extensions": ["less"],
       "quotes": [["\\\"", "\\\""], ["'", "'"]]
     },
+    "Lex": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["l", "lex"]
+    },
     "Liquid": {
       "name": "Liquid",
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["liquid"],
       "multi_line_comments": [["<!--", "-->"], ["{% comment %}", "{% endcomment %}"]]
     },
-    "LinkerScript": {
-      "name": "LD Script",
-      "line_comment": ["//"],
+    "LinguaFranca": {
+      "name": "Lingua Franca",
+      "line_comment": ["//", "#"],
+      "important_syntax": ["{="],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
-      "extensions": ["lds"]
+      "nested": true,
+      "extensions": ["lf"]
+    },
+    "LinkerScript": {
+      "name": "LD Script",
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["ld", "lds"]
     },
     "Lisp": {
       "name": "Common Lisp",
@@ -877,7 +1044,7 @@
       "line_comment": ["--"],
       "multi_line_comments": [["--[[", "]]"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
-      "extensions": ["lua"]
+      "extensions": ["lua", "luau"]
     },
     "Lucius": {
       "line_comment": ["//"],
@@ -898,12 +1065,31 @@
     "Makefile": {
       "line_comment": ["#"],
       "extensions": ["makefile", "mak", "mk"],
-      "filenames": ["makefile"]
+      "filenames": ["gnumakefile", "makefile"]
     },
     "Markdown": {
       "literate": true,
       "important_syntax": ["```"],
       "extensions": ["md", "markdown"]
+    },
+    "Max": {
+      "extensions": ["maxpat"]
+    },
+    "Mdx": {
+      "name": "MDX",
+      "literate": true,
+      "important_syntax": ["```"],
+      "extensions": ["mdx"]
+    },
+    "Menhir": {
+      "nested": true,
+      "quotes": [["\\\"", "\\\""]],
+      "line_comment": ["//"],
+      "multi_line_comments": [
+        ["(*", "*)"],
+        ["/*", "*/"]
+      ],
+      "extensions": ["mll", "mly", "vy"]
     },
     "Meson": {
       "line_comment": ["#"],
@@ -925,6 +1111,35 @@
       "line_comment": ["//"],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["mlt"]
+    },
+    "Modelica": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["mo", "mos"]
+    },
+    "ModuleDef": {
+      "name": "Module-Definition",
+      "extensions": ["def"],
+      "line_comment": [";"]
+    },
+    "Mojo": {
+      "line_comment": ["#"],
+      "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["'''", "'''"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "extensions": ["mojo", "🔥"]
+    },
+    "MonkeyC": {
+      "name": "Monkey C",
+      "extensions": ["mc"],
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]]
+    },
+    "MoonBit": {
+      "line_comment": ["//"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["mbt", "mbti"]
     },
     "MoonScript": {
       "line_comment": ["--"],
@@ -966,6 +1181,27 @@
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["nqp"]
     },
+    "NuGetConfig": {
+      "name": "NuGet Config",
+      "multi_line_comments": [["<!--", "-->"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "filenames": ["nuget.config", "packages.config", "nugetdefaults.config"]
+    },
+    "Nushell": {
+      "line_comment": ["#"],
+      "quotes": [
+        ["\\\"", "\\\""],
+        ["'", "'"]
+      ],
+      "extensions": ["nu"]
+    },
+    "ObjectiveC": {
+      "name": "Objective-C",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["m"]
+    },
     "ObjectiveCpp": {
       "name": "Objective-C++",
       "line_comment": ["//"],
@@ -976,10 +1212,17 @@
     "OCaml": {
       "quotes": [["\\\"", "\\\""]],
       "multi_line_comments": [["(*", "*)"]],
-      "extensions": ["ml", "mli", "mll", "mly", "re", "rei"]
+      "extensions": ["ml", "mli", "re", "rei"]
     },
     "Odin": {
       "extensions": ["odin"],
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]]
+    },
+    "OpenScad": {
+      "name": "OpenSCAD",
+      "extensions": ["scad"],
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]]
@@ -989,6 +1232,17 @@
       "line_comment": ["#"],
       "quotes": [["\\\"","\\\""], ["`", "`"]],
       "extensions": ["rego"]
+    },
+    "OpenCL": {
+      "name": "OpenCL",
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["cl", "ocl"]
+    },
+    "OpenQasm": {
+      "name": "OpenQASM",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["qasm"]
     },
     "OpenType": {
       "name": "OpenType Feature File",
@@ -1004,6 +1258,12 @@
       "quotes": [["\\\"", "\\\""]],
       "multi_line_comments": [["/*", "*/"]],
       "extensions": ["oz"]
+    },
+    "PacmanMakepkg": {
+      "name": "Pacman's makepkg",
+      "line_comment": ["#"],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "filenames": ["pkgbuild"]
     },
     "Pan": {
       "line_comment": ["#"],
@@ -1029,12 +1289,32 @@
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["pest"]
     },
+    "Phix": {
+      "line_comment": ["--", "//", "#!"],
+      "multi_line_comments": [["/*", "*/"], ["--/*", "--*/"]],
+      "nested": true,
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "verbatim_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["`", "`"]],
+      "extensions": ["e","exw"]
+    },
     "Php": {
       "name": "PHP",
       "line_comment": ["#", "//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["php"]
+    },
+    "PlantUml": {
+      "name": "PlantUML",
+      "line_comment": ["'"],
+      "multi_line_comments": [["/'", "'/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["puml"]
+    },
+    "Po": {
+        "name": "PO File",
+        "line_comment": ["#"],
+        "extensions": ["po", "pot"]
     },
     "Poke": {
       "multi_line_comments": [["/*", "*/"]],
@@ -1069,6 +1349,12 @@
         ["@'", "'@"]
       ],
       "extensions": ["ps1", "psm1", "psd1", "ps1xml", "cdxml", "pssc", "psc1"]
+    },
+    "PRACTICE": {
+      "name": "Lauterbach PRACTICE Script",
+      "line_comment": [";", "//"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["cmm"]
     },
     "Processing": {
       "line_comment": ["//"],
@@ -1114,13 +1400,26 @@
       "multi_line_comments": [["{-", "-}"]],
       "extensions": ["purs"]
     },
+    "Pyret": {
+      "line_comment": ["#"],
+      "multi_line_comments": [["#|", "|#"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "extensions": ["arr"],
+      "nested": true
+    },
     "Python": {
       "line_comment": ["#"],
       "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["'''", "'''"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "env": ["python", "python2", "python3"],
       "mime": ["text/x-python"],
-      "extensions": ["py", "pyw"]
+      "extensions": ["py", "pyw", "pyi"]
+    },
+    "PRQL": {
+      "line_comment": ["#"],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "mime": ["application/prql"],
+      "extensions": ["prql"]
     },
     "Q": {
       "name": "Q",
@@ -1199,8 +1498,19 @@
       "extensions": ["raku", "rakumod", "rakutest", "pm6", "pl6", "p6"]
     },
     "Razor": {
-      "multi_line_comments": [["<!--", "-->"], ["@*", "*@"]],
-      "extensions": ["cshtml"]
+      "line_comment": ["//"],
+      "multi_line_comments": [["<!--", "-->"], ["@*", "*@"], ["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "verbatim_quotes": [["@\\\"", "\\\""]],
+      "extensions": ["cshtml", "razor"]
+    },
+    "Redscript": {
+      "name": "Redscript",
+      "line_comment": ["//", "///"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "nested": true,
+      "extensions": ["reds"]
     },
     "Renpy": {
       "name": "Ren'Py",
@@ -1217,6 +1527,15 @@
     "ReStructuredText": {
       "blank": true,
       "extensions": ["rst"]
+    },
+    "Roc": {
+      "line_comment": ["#"],
+      "quotes": [
+        ["\\\"", "\\\""],
+        ["'", "'"]
+      ],
+      "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""]],
+      "extensions": ["roc"]
     },
     "RON": {
       "name": "Rusty Object Notation",
@@ -1297,11 +1616,38 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["shader", "cginc"]
     },
+    "SIL": {
+      "name": "SIL",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"], ["/+", "+/"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
+      "extensions": ["sil"]
+    },
+    "Slang": {
+      "name": "Slang",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["slang"]
+    },
     "Sml": {
       "name": "Standard ML (SML)",
       "quotes": [["\\\"", "\\\""]],
       "multi_line_comments": [["(*", "*)"]],
       "extensions": ["sml"]
+    },
+    "Smalltalk": {
+      "name": "Smalltalk",
+      "quotes": [["'", "'"]],
+      "multi_line_comments": [["\\\"", "\\\""]],
+      "extensions": ["cs.st", "pck.st"]
+    },
+    "Snakemake": {
+      "line_comment": ["#"],
+      "doc_quotes": [["\\\"\\\"\\\"", "\\\"\\\"\\\""], ["'''", "'''"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"]],
+      "extensions": ["smk", "rules"],
+      "filenames": ["snakefile"]
     },
     "Solidity": {
       "name": "Solidity",
@@ -1345,6 +1691,11 @@
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["stan"]
+    },
+    "Stata": {
+      "line_comment": ["//", "*"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["do"]
     },
     "Stratego": {
       "name": "Stratego/XT",
@@ -1393,6 +1744,18 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["sv", "svh"]
     },
+    "Slint": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["slint"]
+    },
+    "Tact": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["tact"]
+    },
     "Tcl": {
       "name": "TCL",
       "line_comment": ["#"],
@@ -1403,6 +1766,14 @@
       "multi_line_comments": [["<!--", "-->"], ["{#", "#}"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["tera"]
+    },
+    "Templ": {
+      "name": "Templ",
+      "line_comment": ["//"],
+      "multi_line_comments": [["<!--", "-->"], ["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
+      "important_syntax": ["templ", "script", "css"],
+      "extensions": ["templ", "tmpl"]
     },
     "Tex": {
       "name": "TeX",
@@ -1456,7 +1827,19 @@
       "line_comment": ["//"],
       "multi_line_comments": [["/*", "*/"]],
       "quotes": [["\\\"", "\\\""], ["'", "'"], ["`", "`"]],
-      "extensions": ["ts"]
+      "extensions": ["ts", "mts", "cts"]
+    },
+    "Typst": {
+      "nested": true,
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["typ"]
+    },
+    "Uiua": {
+      "line_comment": ["#"],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["ua"]
     },
     "UMPL": {
       "line_comment": ["!"],
@@ -1523,6 +1906,11 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["vala"]
     },
+    "VB6": {
+      "name": "VB6",
+      "line_comment": ["'"],
+      "extensions": ["frm", "bas", "cls"]
+    },
     "VBScript": {
       "name": "VBScript",
       "line_comment": ["'", "REM"],
@@ -1550,6 +1938,12 @@
       "line_comment": ["--"],
       "multi_line_comments": [["/*", "*/"]],
       "extensions": ["vhd", "vhdl"]
+    },
+    "Virgil": {
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "quotes": [["\\\"", "\\\""]],
+      "extensions": ["v3"]
     },
     "VisualBasic": {
       "name": "Visual Basic",
@@ -1650,11 +2044,23 @@
       "quotes": [["\\\"", "\\\""]],
       "extensions": ["zig"]
     },
+    "Zokrates": {
+      "name": "ZoKrates",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["zok"]
+    },
     "Zsh": {
       "shebangs": ["#!/bin/zsh"],
       "line_comment": ["#"],
       "quotes": [["\\\"", "\\\""], ["'", "'"]],
       "extensions": ["zsh"]
+    },
+    "GdShader": {
+      "name": "GDShader",
+      "line_comment": ["//"],
+      "multi_line_comments": [["/*", "*/"]],
+      "extensions": ["gdshader"]
     }
   }
 }
